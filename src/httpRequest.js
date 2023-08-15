@@ -43,7 +43,10 @@ export default function newHttpRequest(method, url, headers, body, pageIsClosing
         }
         resolve({
           status: xhr.status,
-          header: key => xhr.getResponseHeader(key),
+          header: key => {
+            console.log('js-client-sdk header - key', key);
+            return xhr.getResponseHeader(key);
+          },
           body: xhr.responseText,
         });
       });
